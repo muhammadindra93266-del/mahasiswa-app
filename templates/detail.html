@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Mahasiswa</title>
+</head>
+<body>
+
+    <h1>Detail Mahasiswa</h1>
+
+    <p>
+        <strong>NIM:</strong>
+        {{ mahasiswa["nim"] }}
+    </p>
+
+    <p>
+        <strong>Nama:</strong>
+        {{ mahasiswa["nama"] }}
+    </p>
+
+    <p>
+        <strong>Program Studi:</strong>
+        {{ mahasiswa["program_studi"] }}
+    </p>
+
+    <p>
+        <strong>Angkatan:</strong>
+        {{ mahasiswa["angkatan"] }}
+    </p>
+
+    <p>
+        <strong>IPK:</strong>
+        {{ "%.2f"|format(mahasiswa["ipk"]) }}
+    </p>
+
+    <p>
+        <strong>Lama Studi:</strong>
+        {{ lama_studi }} tahun
+    </p>
+
+    <br>
+
+    <a href="/">
+        Kembali
+    </a>
+
+    |
+
+    <a href="{{ url_for('edit', nim=mahasiswa['nim']) }}">
+        Edit
+    </a>
+
+</body>
+</html>

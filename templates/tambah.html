@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Tambah Mahasiswa</title>
+</head>
+<body>
+
+    <h1>Tambah Mahasiswa</h1>
+
+    {% if error %}
+        <p style="color:red;">
+            {{ error }}
+        </p>
+    {% endif %}
+
+    <form method="POST">
+
+        <p>
+            <label>NIM:</label><br>
+            <input type="number" name="nim" required>
+        </p>
+
+        <p>
+            <label>Nama:</label><br>
+            <input type="text" name="nama" required>
+        </p>
+
+        <p>
+            <label>Program Studi:</label><br>
+            <input type="text" name="program_studi" required>
+        </p>
+
+        <p>
+            <label>Angkatan:</label><br>
+            <input type="number" name="angkatan" required>
+        </p>
+
+        <p>
+            <label>IPK:</label><br>
+            <input
+                type="number"
+                name="ipk"
+                min="0"
+                max="4"
+                step="0.01"
+                required
+            >
+        </p>
+
+        <button type="submit">
+            Simpan
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/">
+        Kembali
+    </a>
+
+</body>
+</html>

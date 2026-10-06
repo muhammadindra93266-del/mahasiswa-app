@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Mahasiswa</title>
+</head>
+<body>
+
+    <h1>Data Mahasiswa</h1>
+
+    <a href="{{ url_for('tambah') }}">
+        <button>Tambah Mahasiswa</button>
+    </a>
+
+    <br><br>
+
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Program Studi</th>
+            <th>Angkatan</th>
+            <th>IPK</th>
+            <th>Lama Studi</th>
+            <th>Aksi</th>
+        </tr>
+
+        {% for m in mahasiswa %}
+
+        <tr>
+
+            <td>{{ m["nim"] }}</td>
+
+            <td>{{ m["nama"] }}</td>
+
+            <td>{{ m["program_studi"] }}</td>
+
+            <td>{{ m["angkatan"] }}</td>
+
+            <td>{{ "%.2f"|format(m["ipk"]) }}</td>
+
+            <td>
+                {{ tahun_sekarang - m["angkatan"] }} tahun
+            </td>
+
+            <td>
+
+                <a href="{{ url_for('detail', nim=m['nim']) }}">
+                    Detail
+                </a>
+
+                |
+
+                <a href="{{ url_for('edit', nim=m['nim']) }}">
+                    Edit
+                </a>
+
+                |
+
+                <form
+                    action="{{ url_for('hapus', nim=m['nim']) }}"
+                    method="POST"
+                    style="display:inline;"
+                    onsubmit="return confirm('Yakin ingin menghapus data ini?');"
+                >
+                    <button type="submit">
+                        Hapus
+                    </button>
+                </form>
+
+            </td>
+
+        </tr>
+
+        {% else %}
+
+        <tr>
+            <td colspan="7">
+                Belum ada data mahasiswa.
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>
